@@ -1,0 +1,9 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: cloudrun-sample
+spec:
+  template:
+    spec:
+      containers:
+      - image: clouddeploy-cloudrun-app-image

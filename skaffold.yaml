@@ -1,0 +1,13 @@
+apiVersion: skaffold/v3alpha1
+kind: Config
+metadata:
+  name: clouddeploy-cloudrun-skaffold
+manifests:
+  rawYaml:
+    - manifests/run-manifest.yaml  
+build:
+  artifacts:
+  - image: clouddeploy-cloudrun-app-image
+    jib: {}
+deploy:
+  cloudrun: {}

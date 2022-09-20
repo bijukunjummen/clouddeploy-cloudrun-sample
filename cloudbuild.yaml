@@ -1,0 +1,20 @@
+steps:
+  - name: openjdk:17
+    id: test
+    entrypoint: "/bin/bash"
+    args:
+      - '-c'
+      - |-
+        ./gradlew check
+  - name: "us-west1-docker.pkg.dev/$PROJECT_ID/sample-repo/skaffold:latest"
+    id: build-image
+    entrypoint: "/bin/bash"
+    args:
+      - '-c'
+      - |-
+        set -x
+        skaffold build --interactive=false --default-repo=us-west1-docker.pkg.dev/$PROJECT_ID/sample-repo --file-output artifacts.json
+
+  - name: 'gcr.io/cloud-builders/gcloud'
+    id: trigger-deploy
+    args: [ "deploy", "releases",  "create",  "release-$SHORT_SHA", "--delivery-pipeline",  "clouddeploy-cloudrun-sample", "--region", "us-west1", "--build-artifacts", "artifacts.json" ]

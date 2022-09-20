@@ -1,0 +1,28 @@
+apiVersion: deploy.cloud.google.com/v1
+kind: DeliveryPipeline
+metadata:
+  name: clouddeploy-cloudrun-sample
+description: Delivery Pipeline for a sample java app
+serialPipeline:
+  stages:
+    - targetId: dev
+    - targetId: prod
+
+---
+apiVersion: deploy.cloud.google.com/v1
+kind: Target
+metadata:
+  name: dev
+description: Cloud Run Dev environment
+run:
+  location: projects/biju-altostrat-demo/locations/us-west1/
+
+---
+apiVersion: deploy.cloud.google.com/v1
+kind: Target
+metadata:
+  name: prod
+description: Cloud Run Prod Environment
+requireApproval: true
+gke:
+  cluster: projects/biju-altostrat-demo/locations/us-west2
