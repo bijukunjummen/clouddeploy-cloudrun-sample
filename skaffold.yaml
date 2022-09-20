@@ -11,12 +11,12 @@ build:
     jib: {}
 profiles:
 - name: dev
-  deploy:
+  manifests:
     kustomize:
       paths:
         - manifests/overlays/dev
 - name: prod
-  deploy:
+  manifests:
     kustomize:
       paths:
         - manifests/overlays/prod
