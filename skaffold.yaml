@@ -21,4 +21,5 @@ profiles:
       paths:
         - manifests/overlays/prod
 deploy:
-  cloudrun: {}
+  cloudrun:
+    region: us-west1-a

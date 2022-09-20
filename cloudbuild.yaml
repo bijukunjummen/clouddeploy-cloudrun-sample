@@ -17,4 +17,4 @@ steps:
 
   - name: 'gcr.io/cloud-builders/gcloud'
     id: trigger-deploy
-    args: [ "deploy", "releases",  "create",  "release-$SHORT_SHA", "--delivery-pipeline",  "clouddeploy-cloudrun-sample", "--region", "us-west1", "--build-artifacts", "artifacts.json" ]
+    args: [ "deploy", "releases",  "create",  "release-$SHORT_SHA", "--delivery-pipeline",  "clouddeploy-cloudrun-sample", "--cloud-run-location", "us-west1", "--build-artifacts", "artifacts.json" ]
