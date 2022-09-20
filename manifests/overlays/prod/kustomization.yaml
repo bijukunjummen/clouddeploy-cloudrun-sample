@@ -1,3 +1,2 @@
-namePrefix: prod-
 resources:
 - ../../base
