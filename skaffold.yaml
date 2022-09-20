@@ -3,8 +3,9 @@ kind: Config
 metadata:
   name: clouddeploy-cloudrun-skaffold
 manifests:
-  rawYaml:
-    - manifests/base/run-manifest.yaml
+  kustomize:
+    paths:
+    - manifests/base
 build:
   artifacts:
   - image: clouddeploy-cloudrun-app-image
