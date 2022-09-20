@@ -9,5 +9,16 @@ build:
   artifacts:
   - image: clouddeploy-cloudrun-app-image
     jib: {}
+profiles:
+- name: dev
+  deploy:
+    kustomize:
+      paths:
+        - manifests/overlays/dev
+- name: prod
+  deploy:
+    kustomize:
+      paths:
+        - manifests/overlays/prod
 deploy:
   cloudrun: {}
