@@ -17,7 +17,7 @@ This is a complete pipeline demonstrating:
   - Using [Cloud Console](https://cloud.google.com/build/docs/automating-builds/create-manage-triggers)
   - OR using command line:
     ```shell
-    gcloud beta builds triggers create github --repo-name clouddeploy-cloudrun-sample --repo-owner bijukunjummen --branch-pattern '^main$' --name clouddeploy-cloudrun-sample --build-config cloudbuild.yaml
+    gcloud builds triggers create github --repo-name clouddeploy-cloudrun-sample --repo-owner bijukunjummen --branch-pattern '^main$' --name clouddeploy-cloudrun-sample --build-config cloudbuild.yaml
     ```
 - Create a Deployment Pipeline -
     ```shell
