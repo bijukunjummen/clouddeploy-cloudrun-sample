@@ -1,22 +1,19 @@
 package org.bk.sample.service;
 
-import io.micrometer.core.instrument.MeterRegistry;
-import org.springframework.context.annotation.Profile;
-import org.springframework.scheduling.annotation.Scheduled;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.context.ApplicationEvent;
+import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 
 @Component
-@Profile("gcp")
-public class RecordCpuCountMetrics {
-    public static final String CPU_COUNT = "cpu.count";
-    private final MeterRegistry meterRegistry;
+public class RecordCpuCountMetrics implements ApplicationListener<ApplicationEvent> {
 
-    public RecordCpuCountMetrics(MeterRegistry meterRegistry) {
-        this.meterRegistry = meterRegistry;
-    }
+    private static final Logger LOGGER = LoggerFactory.getLogger(RecordCpuCountMetrics.class);
 
-    @Scheduled(fixedRate = 5000)
-    public void recordCpuCount() {
-        meterRegistry.gauge(CPU_COUNT, Runtime.getRuntime().availableProcessors());
+    @Override
+    public void onApplicationEvent(ApplicationEvent event) {
+        LOGGER.info("Cpu Count for event: {}, is: {}",
+                event.getClass().getName(), Runtime.getRuntime().availableProcessors());
     }
 }
