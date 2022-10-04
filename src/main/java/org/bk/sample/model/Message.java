@@ -1,4 +1,4 @@
-package org.bk.model;
+package org.bk.sample.model;
 
 public record Message(String payload) {
 }

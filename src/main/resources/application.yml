@@ -1,0 +1,14 @@
+spring:
+  cloud:
+    gcp:
+      metrics:
+        enabled: false
+      core:
+        enabled: false
+
+management:
+  metrics:
+    export:
+      stackdriver:
+        enabled: false
+

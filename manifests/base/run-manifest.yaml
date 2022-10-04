@@ -7,3 +7,6 @@ spec:
     spec:
       containers:
       - image: clouddeploy-cloudrun-app-image
+        env:
+          - name: SPRING_PROFILES_ACTIVE
+            value: gcp

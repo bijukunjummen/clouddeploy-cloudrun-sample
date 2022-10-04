@@ -1,4 +1,4 @@
-package org.bk.web;
+package org.bk.sample.web;
 
 import org.junit.jupiter.api.Test;
 

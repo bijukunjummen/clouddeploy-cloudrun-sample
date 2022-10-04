@@ -4,7 +4,11 @@ plugins {
 	id 'java'
 	id 'com.google.cloud.tools.jib' version '3.3.0'
 }
-
+ext {
+	set('springCloudGcpVersion', "3.3.0")
+	set('springCloudVersion', "2021.0.4")
+	testContainersVersion = "1.17.0"
+}
 group = 'org.bk'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '17'
@@ -15,8 +19,16 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-webflux'
+	implementation "com.google.cloud:spring-cloud-gcp-starter-metrics"
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'io.projectreactor:reactor-test'
+}
+
+dependencyManagement {
+	imports {
+		mavenBom "com.google.cloud:spring-cloud-gcp-dependencies:${springCloudGcpVersion}"
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+	}
 }
 
 test {
