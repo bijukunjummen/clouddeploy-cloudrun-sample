@@ -12,3 +12,7 @@ management:
     export:
       stackdriver:
         enabled: false
+
+logging:
+  level:
+    root: debug
