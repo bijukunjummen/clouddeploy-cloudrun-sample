@@ -1,32 +1,33 @@
 plugins {
-	id 'org.springframework.boot' version '2.7.3'
-	id 'io.spring.dependency-management' version '1.0.13.RELEASE'
-	id 'java'
-	id 'com.google.cloud.tools.jib' version '3.3.0'
+    id 'org.springframework.boot' version '2.7.3'
+    id 'io.spring.dependency-management' version '1.0.13.RELEASE'
+    id 'java'
+    id 'com.google.cloud.tools.jib' version '3.3.0'
 }
 ext {
-	testContainersVersion = "1.17.0"
+    testContainersVersion = "1.17.0"
 }
 group = 'org.bk'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '17'
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-webflux'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testImplementation 'io.projectreactor:reactor-test'
+    implementation('org.springframework.boot:spring-boot-starter-webflux')
+    implementation('org.springframework.boot:spring-boot-starter-actuator')
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
+    testImplementation('io.projectreactor:reactor-test')
 }
 
 test {
-	useJUnitPlatform()
+    useJUnitPlatform()
 }
 
 jib {
-	from {
-		image = 'gcr.io/distroless/java17-debian11'
-	}
+    from {
+        image = 'gcr.io/distroless/java17-debian11'
+    }
 }
