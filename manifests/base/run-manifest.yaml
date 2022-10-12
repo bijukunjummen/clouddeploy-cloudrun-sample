@@ -9,9 +9,9 @@ spec:
     spec:
       containers:
       - image: clouddeploy-cloudrun-app-image
-        startupProbe:
-          httpGet:
-            path: /actuator/health/readiness
+#        startupProbe:
+#          httpGet:
+#            path: /actuator/health/readiness
         env:
           - name: SPRING_PROFILES_ACTIVE
             value: gcp
