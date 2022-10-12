@@ -2,6 +2,8 @@ apiVersion: serving.knative.dev/v1
 kind: Service
 metadata:
   name: cloudrun-sample
+  annotations:
+    run.googleapis.com/launch-stage: BETA
 spec:
   template:
     spec:
