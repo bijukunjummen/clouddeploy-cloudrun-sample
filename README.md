@@ -9,10 +9,12 @@ This is a complete pipeline demonstrating:
 4. Manually promoting it into Cloud Run Prod App
 
 ## Resources
+
 - cloudbuild.yaml holds the CI pipeline steps
 - clouddeploy.yaml holds the CD pipeline steps
 
 ## Deployment
+
 - Create a Cloud Build Trigger:
   - Using [Cloud Console](https://cloud.google.com/build/docs/automating-builds/create-manage-triggers)
   - OR using command line:
