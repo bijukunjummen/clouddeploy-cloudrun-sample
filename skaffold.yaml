@@ -11,9 +11,9 @@ build:
     push: false
   artifacts:
   - image: clouddeploy-cloudrun-app-image
-    custom:
-      buildCommand: ./gradlew jibDockerBuild --image $IMAGE
-#    jib: {}
+#    custom:
+#      buildCommand: ./gradlew jibDockerBuild --image $IMAGE
+    jib: {}
 profiles:
 - name: dev
   manifests:
