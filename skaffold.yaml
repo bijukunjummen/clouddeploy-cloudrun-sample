@@ -7,6 +7,8 @@ manifests:
     paths:
     - manifests/base
 build:
+  local:
+    push: false
   artifacts:
   - image: clouddeploy-cloudrun-app-image
     custom:
