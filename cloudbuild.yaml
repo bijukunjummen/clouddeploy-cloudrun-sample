@@ -19,4 +19,4 @@ steps:
     id: trigger-deploy
     args: [ "deploy", "releases",  "create",  "release-$SHORT_SHA", "--delivery-pipeline",  "clouddeploy-cloudrun-sample", "--region", "us-west1", "--build-artifacts", "artifacts.json" ]
 images:
-  - us-west1-docker.pkg.dev/$PROJECT_ID/sample-repo/clouddeploy-cloudrun-sample:$SHORT_SHA
+  - us-west1-docker.pkg.dev/$PROJECT_ID/sample-repo/clouddeploy-cloudrun-app-image:$SHORT_SHA
