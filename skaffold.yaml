@@ -9,7 +9,9 @@ manifests:
 build:
   artifacts:
   - image: clouddeploy-cloudrun-app-image
-    jib: {}
+    custom:
+      buildCommand: ./gradlew jibDockerBuild
+#    jib: {}
 profiles:
 - name: dev
   manifests:
