@@ -10,7 +10,7 @@ build:
   artifacts:
   - image: clouddeploy-cloudrun-app-image
     custom:
-      buildCommand: ./gradlew jibDockerBuild
+      buildCommand: ./gradlew jibDockerBuild --image $IMAGE
 #    jib: {}
 profiles:
 - name: dev
