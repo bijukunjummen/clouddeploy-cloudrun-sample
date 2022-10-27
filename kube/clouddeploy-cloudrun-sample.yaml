@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: clouddeploy-cloudrun-sample
+  labels:
+    app: clouddeploy-cloudrun-sample
+spec:
+  ports:
+    - port: 8080
+      name: http
+  selector:
+    app: clouddeploy-cloudrun-sample
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: clouddeploy-cloudrun-sample-v1
+  labels:
+    app: clouddeploy-cloudrun-sample
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: clouddeploy-cloudrun-sample
+  template:
+    metadata:
+      labels:
+        app: clouddeploy-cloudrun-sample
+    spec:
+      containers:
+        - name: clouddeploy-cloudrun-sample
+          image: clouddeploy-cloudrun-app-image
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          securityContext:
+            runAsUser: 1000
+          resources:
+            requests:
+              memory: "256Mi"
