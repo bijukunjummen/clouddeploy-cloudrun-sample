@@ -19,6 +19,10 @@ profiles:
   manifests:
     rawYaml:
         - kube/clouddeploy-cloudrun-sample.yaml
+  deploy:
+    kubectl:
+      manifests:
+        - kube/clouddeploy-cloudrun-sample.yaml
 - name: dev
   manifests:
     kustomize:
