@@ -16,10 +16,11 @@ build:
     jib: {}
 profiles:
 - name: local
-  deploy:
-    kubectl:
-      manifests:
+  manifests:
+    rawYaml:
         - kube/clouddeploy-cloudrun-sample.yaml
+  deploy:
+    kubectl: {}
 - name: dev
   manifests:
     kustomize:
