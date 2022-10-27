@@ -16,9 +16,6 @@ build:
     jib: {}
 profiles:
 - name: local
-  manifests:
-    rawYaml:
-        - kube/clouddeploy-cloudrun-sample.yaml
   deploy:
     kubectl:
       manifests:
