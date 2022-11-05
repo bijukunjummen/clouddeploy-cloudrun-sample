@@ -5,33 +5,36 @@ metadata:
 manifests:
   kustomize:
     paths:
-    - manifests/base
+      - manifests/base
 build:
-#  local:
-#    push: false
+  #  local:
+  #    push: false
   artifacts:
-  - image: clouddeploy-cloudrun-app-image
-#    custom:
-#      buildCommand: ./gradlew jibDockerBuild --image $IMAGE
-    jib: {}
+    - image: clouddeploy-cloudrun-app-image
+      #    custom:
+      #      buildCommand: ./gradlew jibDockerBuild --image $IMAGE
+      jib: { }
 profiles:
-- name: local
-  manifests:
-    kustomize: {}
-    rawYaml:
-        - kube/clouddeploy-cloudrun-sample.yaml
-  deploy:
-    kubectl: {}
-- name: dev
-  manifests:
-    kustomize:
-      paths:
-        - manifests/overlays/dev
-- name: prod
-  manifests:
-    kustomize:
-      paths:
-        - manifests/overlays/prod
+  - name: local
+    manifests:
+      kustomize: { }
+      rawYaml:
+        - kube/app.yaml
+    patches:
+      - op: remove
+        path: /deploy/cloudrun
+    deploy:
+      kubectl: { }
+  - name: dev
+    manifests:
+      kustomize:
+        paths:
+          - manifests/overlays/dev
+  - name: prod
+    manifests:
+      kustomize:
+        paths:
+          - manifests/overlays/prod
 deploy:
   cloudrun:
     region: us-west1-a
