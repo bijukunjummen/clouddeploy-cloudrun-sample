@@ -1,11 +1,11 @@
 plugins {
-    id 'org.springframework.boot' version '2.7.4'
-    id 'io.spring.dependency-management' version '1.0.14.RELEASE'
+    id 'org.springframework.boot' version '3.0.0'
+    id 'io.spring.dependency-management' version '1.1.0'
     id 'java'
     id 'com.google.cloud.tools.jib' version '3.3.0'
 }
 ext {
-    testContainersVersion = "1.17.0"
+    set('testcontainersVersion', "1.17.6")
 }
 group = 'org.bk'
 version = '0.0.1-SNAPSHOT'
@@ -20,6 +20,12 @@ dependencies {
     implementation('org.springframework.boot:spring-boot-starter-actuator')
     testImplementation('org.springframework.boot:spring-boot-starter-test')
     testImplementation('io.projectreactor:reactor-test')
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.testcontainers:testcontainers-bom:${testcontainersVersion}"
+    }
 }
 
 test {
