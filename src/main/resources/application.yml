@@ -6,20 +6,20 @@ spring:
       core:
         enabled: false
 
+
 management:
-  health:
-    probes:
-      enabled: true
-  metrics:
-    export:
-      stackdriver:
-        enabled: false
   endpoint:
     health:
       enabled: true
       show-details: always
+      probes:
+        enabled: true
   endpoints:
     enabled-by-default: false
     web:
       exposure:
         include: "*"
+  stackdriver:
+    metrics:
+      export:
+        enabled: false

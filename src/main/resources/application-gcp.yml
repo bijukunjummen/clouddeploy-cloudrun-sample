@@ -8,9 +8,9 @@ spring:
 
 
 management:
-  metrics:
-    export:
-      stackdriver:
+  stackdriver:
+    metrics:
+      export:
         enabled: true
 
 logging:
