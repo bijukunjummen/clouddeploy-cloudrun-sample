@@ -9,7 +9,7 @@ spec:
       - image: clouddeploy-cloudrun-app-image
         startupProbe:
           httpGet:
-            path: /actuator/health/readiness
+            path: "/actuator/health/readiness"
           initialDelaySeconds: 30
           timeoutSeconds: 10
           failureThreshold: 10
