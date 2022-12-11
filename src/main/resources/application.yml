@@ -23,3 +23,7 @@ management:
     metrics:
       export:
         enabled: false
+
+logging:
+  level:
+    root: debug
