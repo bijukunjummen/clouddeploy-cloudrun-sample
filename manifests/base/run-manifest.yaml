@@ -7,20 +7,20 @@ spec:
     spec:
       containers:
       - image: clouddeploy-cloudrun-app-image
-        startupProbe:
-          httpGet:
-            path: "/actuator/health/readiness"
-          initialDelaySeconds: 30
-          timeoutSeconds: 10
-          failureThreshold: 10
-          periodSeconds: 10
-#        livenessProbe:
+#        startupProbe:
 #          httpGet:
-#            path: /actuator/health/liveness
+#            path: "/actuator/health"
 #          initialDelaySeconds: 30
 #          timeoutSeconds: 10
 #          failureThreshold: 10
 #          periodSeconds: 10
+        livenessProbe:
+          httpGet:
+            path: ""/actuator/health/liveness"
+          initialDelaySeconds: 10
+          timeoutSeconds: 10
+          failureThreshold: 10
+          periodSeconds: 10
         env:
           - name: SPRING_PROFILES_ACTIVE
             value: gcp
