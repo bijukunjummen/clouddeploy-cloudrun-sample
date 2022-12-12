@@ -13,12 +13,18 @@ spec:
               httpHeaders:
                 - name: "HOST"
                   value: "localhost:8080"
+            initialDelaySeconds: 15
+            periodSeconds: 10
+            failureThreshold: 5
           livenessProbe:
             httpGet:
               path: "/actuator/health/liveness"
               httpHeaders:
                 - name: "HOST"
                   value: "localhost:8080"
+            initialDelaySeconds: 15
+            periodSeconds: 10
+            failureThreshold: 5
           env:
             - name: SPRING_PROFILES_ACTIVE
               value: gcp
