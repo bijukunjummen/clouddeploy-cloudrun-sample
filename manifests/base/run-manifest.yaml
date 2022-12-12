@@ -6,13 +6,19 @@ spec:
   template:
     spec:
       containers:
-      - image: clouddeploy-cloudrun-app-image
-        startupProbe:
-          httpGet:
-            path: "/actuator/health/readiness"
-        livenessProbe:
-          httpGet:
-            path: "/actuator/health/liveness"
-        env:
-          - name: SPRING_PROFILES_ACTIVE
-            value: gcp
+        - image: clouddeploy-cloudrun-app-image
+          startupProbe:
+            httpGet:
+              path: "/actuator/health/readiness"
+              httpHeaders:
+                - name: "HOST"
+                  value: "localhost:8080"
+          livenessProbe:
+            httpGet:
+              path: "/actuator/health/liveness"
+            httpHeaders:
+              - name: "HOST"
+                value: "localhost:8080"
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: gcp
