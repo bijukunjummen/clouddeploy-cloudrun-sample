@@ -16,9 +16,9 @@ spec:
           livenessProbe:
             httpGet:
               path: "/actuator/health/liveness"
-            httpHeaders:
-              - name: "HOST"
-                value: "localhost:8080"
+              httpHeaders:
+                - name: "HOST"
+                  value: "localhost:8080"
           env:
             - name: SPRING_PROFILES_ACTIVE
               value: gcp
