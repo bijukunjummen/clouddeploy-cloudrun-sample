@@ -38,7 +38,7 @@ public class LoadController {
         }
         int triggerDuration = (duration > 15000) ? 15000 : duration;
 
-        List<CompletableFuture<Integer>> futures = IntStream.range(1, Runtime.getRuntime().availableProcessors())
+        List<CompletableFuture<Integer>> futures = IntStream.rangeClosed(1, Runtime.getRuntime().availableProcessors())
                 .boxed()
                 .map(n -> CompletableFuture.supplyAsync(new BusyThread(n, 0.5, triggerDuration), executor))
                 .collect(Collectors.toList());
