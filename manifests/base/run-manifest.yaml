@@ -4,7 +4,12 @@ metadata:
   name: cloudrun-sample
 spec:
   template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/minScale: '1'
+        autoscaling.knative.dev/maxScale: '20'
     spec:
+      containerConcurrency: 1000
       containers:
         - image: clouddeploy-cloudrun-app-image
           startupProbe:
